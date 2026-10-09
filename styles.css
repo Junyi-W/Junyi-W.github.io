@@ -1467,3 +1467,23 @@ a.pub-badge:focus-visible {
     -webkit-mask-position: center;
     mask-position: center;
 }
+
+/* Pixel avatar walking the trail -------------------------------------------- */
+.traveler-avatar {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    cursor: grab;
+    touch-action: none;
+    filter: drop-shadow(0 3px 3px rgba(18, 20, 30, 0.18));
+    transform-origin: 50% 100%;
+}
+:root[data-theme="dark"] .traveler-avatar { filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.6)); }
+.traveler-stage.is-moving .traveler-avatar { animation: traveler-hop 360ms steps(2) infinite; }
+.traveler-stage.is-dragging .traveler-avatar { cursor: grabbing; animation: none; transform: scale(1.06); }
+.is-traveler-dragging, .is-traveler-dragging * { cursor: grabbing !important; user-select: none; }
+@keyframes traveler-hop { 50% { transform: translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) {
+    .traveler-stage.is-moving .traveler-avatar { animation: none; }
+}

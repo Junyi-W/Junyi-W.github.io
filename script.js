@@ -847,6 +847,50 @@ function initScrollSpy() {
     return { refresh };
 }
 
+// Pixel avatar on the bottom trail: drag it along the path to scroll the page,
+// and it hops while the page is scrolling.
+function initTravelerDrag() {
+    const stage = document.querySelector('.traveler-stage');
+    const track = document.querySelector('.trail-track');
+    if (!stage || !track) return;
+
+    let dragging = false;
+    let hopTimer = 0;
+
+    const scrollToPointer = clientX => {
+        const rect = track.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        window.scrollTo({ top: progress * scrollable, behavior: 'auto' });
+    };
+
+    stage.addEventListener('pointerdown', event => {
+        dragging = true;
+        stage.setPointerCapture(event.pointerId);
+        stage.classList.add('is-dragging');
+        document.documentElement.classList.add('is-traveler-dragging');
+        event.preventDefault();
+    });
+    stage.addEventListener('pointermove', event => {
+        if (dragging) scrollToPointer(event.clientX);
+    });
+    const end = event => {
+        if (!dragging) return;
+        dragging = false;
+        stage.releasePointerCapture?.(event.pointerId);
+        stage.classList.remove('is-dragging');
+        document.documentElement.classList.remove('is-traveler-dragging');
+    };
+    stage.addEventListener('pointerup', end);
+    stage.addEventListener('pointercancel', end);
+
+    window.addEventListener('scroll', () => {
+        stage.classList.add('is-moving');
+        clearTimeout(hopTimer);
+        hopTimer = setTimeout(() => stage.classList.remove('is-moving'), 180);
+    }, { passive: true });
+}
+
 function initPublicationFilters(onChange) {
     const section = document.getElementById('publications');
     const controls = section?.querySelector('.publication-controls');
@@ -900,6 +944,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Runs after renderNavigation, which replaces the nav anchors wholesale.
     scrollSpy = initScrollSpy();
+    initTravelerDrag();
 
     await loadAndRenderGitHubRepos();
     externalizeLinks();
