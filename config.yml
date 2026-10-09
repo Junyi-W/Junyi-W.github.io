@@ -1,0 +1,55 @@
+# 个人信息
+profile:
+  name: "Junyi Wu"
+  title: "PhD Student"
+  department: "Mathematics"
+  university: "Purdue University"
+  motto: "— Junyi-W"
+  image: "images/photo.jpg"
+
+# 社交媒体链接
+social:
+  google_scholar:
+    url: "https://scholar.google.com/citations?user=_lm1fGMAAAAJ"
+    icon: "fas fa-graduation-cap"
+    title: "Google Scholar"
+  github:
+    url: "https://github.com/Junyi-W"
+    icon: "fab fa-github"
+    title: "GitHub"
+  linkedin:
+    url: "https://www.linkedin.com/in/junyi-wu-a82165364"
+    icon: "fab fa-linkedin"
+    title: "LinkedIn"
+  cv:
+    url: "pdf/CV.pdf"
+    icon: "fas fa-file-alt"
+    title: "CV"
+  email:
+    url: "mailto:wu2393@purdue.edu"
+    icon: "fas fa-envelope"
+    title: "Email"
+
+# 导航链接
+navigation:
+  about:
+    url: "#about"
+    title: "About"
+  research:
+    url: "#research"
+    title: "Research"
+  news:
+    url: "#news"
+    title: "News"
+  publications:
+    url: "#publications"
+    title: "Publications"
+  github:
+    url: "#github-repos"
+    title: "GitHub"
+  education:
+    url: "#education"
+    title: "Education"
+  services:
+    url: "#services"
+    title: "Services"
