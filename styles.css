@@ -9,7 +9,7 @@
     --page-inline-space: 3rem;
     --topbar-height: 72px;
     --trail-height: 118px;
-    --stage-width: 96px;
+    --stage-width: 64px;
 
     --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
     --font-serif: "EB Garamond", Georgia, "Songti SC", "Times New Roman", serif;
@@ -1312,7 +1312,7 @@ a.pub-badge:focus-visible {
     :root {
         --topbar-height: 60px;
         --trail-height: 92px;
-        --stage-width: 72px;
+        --stage-width: 52px;
     }
 
     .trail-track {
