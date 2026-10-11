@@ -848,14 +848,14 @@ function initScrollSpy() {
 }
 
 // Pixel avatar on the bottom trail: drag it along the path to scroll the page,
-// and it hops while the page is scrolling.
+// lean into the scroll direction, and wave the torch on reaching the end.
 function initTravelerDrag() {
     const stage = document.querySelector('.traveler-stage');
     const track = document.querySelector('.trail-track');
     if (!stage || !track) return;
 
     let dragging = false;
-    let hopTimer = 0;
+    let moveTimer = 0;
 
     const scrollToPointer = clientX => {
         const rect = track.getBoundingClientRect();
@@ -884,10 +884,28 @@ function initTravelerDrag() {
     stage.addEventListener('pointerup', end);
     stage.addEventListener('pointercancel', end);
 
+    let lastY = window.scrollY;
+    let arrived = false;
     window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y !== lastY) stage.dataset.heading = y > lastY ? 'forward' : 'back';
+        lastY = y;
         stage.classList.add('is-moving');
-        clearTimeout(hopTimer);
-        hopTimer = setTimeout(() => stage.classList.remove('is-moving'), 180);
+        clearTimeout(moveTimer);
+        moveTimer = setTimeout(() => stage.classList.remove('is-moving'), 180);
+
+        // Wave the torch once on reaching the end; re-arm after scrolling back up.
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? y / scrollable : 0;
+        if (!arrived && progress >= 0.995) {
+            arrived = true;
+            stage.classList.remove('is-arrived');
+            void stage.offsetWidth;
+            stage.classList.add('is-arrived');
+        } else if (arrived && progress < 0.97) {
+            arrived = false;
+            stage.classList.remove('is-arrived');
+        }
     }, { passive: true });
 }
 

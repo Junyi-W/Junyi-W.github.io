@@ -1480,10 +1480,74 @@ a.pub-badge:focus-visible {
     transform-origin: 50% 100%;
 }
 :root[data-theme="dark"] .traveler-avatar { filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.6)); }
-.traveler-stage.is-moving .traveler-avatar { animation: traveler-hop 360ms steps(2) infinite; }
-.traveler-stage.is-dragging .traveler-avatar { cursor: grabbing; animation: none; transform: scale(1.06); }
+.traveler-stage.is-dragging .traveler-avatar { cursor: grabbing; transform: scale(1.06); }
 .is-traveler-dragging, .is-traveler-dragging * { cursor: grabbing !important; user-select: none; }
-@keyframes traveler-hop { 50% { transform: translateY(-3px); } }
+
+/* Glide: lean toward the direction of travel, ease back upright at rest. */
+.traveler-body {
+    transform: rotate(var(--lean, 0deg));
+    transform-origin: 50% 100%;
+    transition: transform 420ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.traveler-stage.is-moving[data-heading="forward"] .traveler-body { --lean: 3deg; }
+.traveler-stage.is-moving[data-heading="back"] .traveler-body { --lean: -3deg; }
+
+/* Pivot sits on the hand holding the torch. */
+.traveler-wave { position: relative; transform-origin: 27% 63%; }
+.traveler-stage.is-arrived .traveler-wave { animation: torch-wave 900ms ease-in-out; }
+@keyframes torch-wave {
+    25% { transform: rotate(-9deg); }
+    55% { transform: rotate(6deg); }
+    80% { transform: rotate(-2deg); }
+}
+
+/* Torch light: a warm halo over the flame that flickers, brighter in motion. */
+.torch-glow {
+    position: absolute;
+    left: 17.5%;
+    top: 12%;
+    width: 46px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 190, 80, 0.55), rgba(255, 140, 40, 0.18) 45%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(var(--glow-scale, 1));
+    transition: transform 300ms;
+    animation: torch-flicker 1.6s steps(1) infinite;
+}
+.traveler-stage.is-moving .torch-glow { --glow-scale: 1.35; animation-duration: 0.7s; }
+:root[data-theme="dark"] .torch-glow { mix-blend-mode: screen; }
+@keyframes torch-flicker {
+    0%   { opacity: 0.75; }
+    18%  { opacity: 0.95; }
+    37%  { opacity: 0.7; }
+    52%  { opacity: 1; }
+    71%  { opacity: 0.8; }
+    86%  { opacity: 0.92; }
+}
+
+/* Sparks thrown off the flame on arrival at the end of the page. */
+.torch-sparks { position: absolute; left: 17.5%; top: 6%; pointer-events: none; }
+.torch-sparks i {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ffc65a;
+    opacity: 0;
+}
+.traveler-stage.is-arrived .torch-sparks i { animation: torch-spark 900ms steps(6) forwards; }
+.torch-sparks i:nth-child(1) { --dx: -8px; --dy: -14px; }
+.torch-sparks i:nth-child(2) { --dx: 4px;  --dy: -18px; animation-delay: 120ms; background: #ff8f3a; }
+.torch-sparks i:nth-child(3) { --dx: 10px; --dy: -10px; animation-delay: 240ms; }
+.torch-sparks i:nth-child(4) { --dx: -3px; --dy: -20px; animation-delay: 360ms; background: #fff1b8; }
+@keyframes torch-spark {
+    0%   { opacity: 1; transform: translate(0, 0); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .traveler-stage.is-moving .traveler-avatar { animation: none; }
+    .traveler-body { transition: none; --lean: 0deg !important; }
+    .torch-glow { animation: none; opacity: 0.85; }
+    .traveler-stage.is-arrived .traveler-wave,
+    .traveler-stage.is-arrived .torch-sparks i { animation: none; }
 }
