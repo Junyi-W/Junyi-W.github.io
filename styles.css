@@ -1118,7 +1118,8 @@ a.pub-badge:focus-visible {
     margin-block-start: 0.7rem;
 }
 
-.pub-links a {
+.pub-links a,
+.pub-bibtex {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -1131,7 +1132,13 @@ a.pub-badge:focus-visible {
         background-color 160ms var(--ease);
 }
 
-.pub-links a:hover {
+.pub-bibtex {
+    background: none;
+    cursor: pointer;
+}
+
+.pub-links a:hover,
+.pub-bibtex:hover {
     border-color: var(--accent);
     color: var(--accent);
     text-decoration: underline;
@@ -1139,79 +1146,6 @@ a.pub-badge:focus-visible {
 
 .pub-links i {
     font-size: 0.64rem;
-}
-
-/* GitHub ------------------------------------------------------------------ */
-
-.github-repo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.8rem;
-}
-
-.github-repo-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.95rem 1.05rem;
-    border: 1px solid var(--rule-soft);
-    border-radius: var(--radius-md);
-    background: var(--bg-elev);
-    transition: border-color 200ms var(--ease), transform 200ms var(--ease);
-}
-
-.github-repo-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.repo-title a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: var(--ink);
-    font-size: 1.1rem;
-    font-weight: 600;
-    word-break: break-word;
-}
-
-.repo-title i {
-    color: var(--ink-faint);
-    font-size: 0.78rem;
-}
-
-.repo-title a:hover {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.repo-desc {
-    flex: 1;
-    color: var(--ink-soft);
-    font-size: 1rem;
-    line-height: 1.45;
-}
-
-.repo-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    color: var(--ink-faint);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-}
-
-.repo-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.repo-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
 }
 
 /* Education --------------------------------------------------------------- */
@@ -1367,7 +1301,7 @@ a.pub-badge:focus-visible {
     .social-links a,
     .theme-toggle { width: 44px; height: 44px; }
 
-    .pub-links a { min-height: 44px; }
+    .pub-links a, .pub-bibtex { min-height: 44px; }
 
     .trail-line {
         inset-block-end: 15px;

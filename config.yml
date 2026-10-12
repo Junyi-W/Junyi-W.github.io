@@ -44,9 +44,6 @@ navigation:
   publications:
     url: "#publications"
     title: "Publications"
-  github:
-    url: "#github-repos"
-    title: "GitHub"
   education:
     url: "#education"
     title: "Education"

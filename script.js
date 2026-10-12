@@ -1,6 +1,3 @@
-// Repositories shown in the GitHub section.
-const FEATURED_REPOS = ['DIDR'];
-
 const fallbackConfig = {
     profile: {
         name: 'Junyi Wu',
@@ -42,7 +39,6 @@ const fallbackConfig = {
         research: { url: '#research', title: 'Research' },
         news: { url: '#news', title: 'News' },
         publications: { url: '#publications', title: 'Publications' },
-        github: { url: '#github-repos', title: 'GitHub' },
         education: { url: '#education', title: 'Education' },
         services: { url: '#services', title: 'Services' }
     }
@@ -74,7 +70,6 @@ function normalizeAnchor(url) {
         '#research-anchor': '#research',
         '#news-anchor': '#news',
         '#publications-anchor': '#publications',
-        '#github-repos-anchor': '#github-repos',
         '#education-anchor': '#education',
         '#services-anchor': '#services'
     };
@@ -194,54 +189,6 @@ function externalizeLinks() {
         anchor.setAttribute('target', '_blank');
         anchor.setAttribute('rel', 'noopener noreferrer');
     });
-}
-
-async function loadAndRenderGitHubRepos() {
-    const repoSection = document.querySelector('.github-repo-section');
-    if (!repoSection) return;
-
-    repoSection.innerHTML = '<p>Loading repositories...</p>';
-
-    try {
-        const response = await fetch('https://api.github.com/users/Junyi-W/repos?per_page=100&sort=updated');
-        if (!response.ok) throw new Error('GitHub API unavailable');
-
-        const repos = await response.json();
-        if (!Array.isArray(repos)) throw new Error('Invalid repository data');
-
-        const selectedRepos = repos
-            .filter(repo => !repo.fork && FEATURED_REPOS.includes(repo.name))
-            .sort((a, b) => b.stargazers_count - a.stargazers_count)
-            .slice(0, 3);
-
-        if (selectedRepos.length === 0) {
-            repoSection.innerHTML = '<p>No public repositories found.</p>';
-            return;
-        }
-
-        repoSection.innerHTML = `
-            <div class="github-repo-grid">
-                ${selectedRepos.map(repo => `
-                    <article class="github-repo-card">
-                        <div class="repo-title">
-                            <a href="${escapeHtml(repo.html_url)}">
-                                <i class="fa-solid fa-book" aria-hidden="true"></i>
-                                ${escapeHtml(repo.name)}
-                            </a>
-                        </div>
-                        <div class="repo-desc">${escapeHtml(repo.description || '')}</div>
-                        <div class="repo-meta">
-                            ${repo.language ? `<span class="repo-lang"><span class="repo-dot"></span>${escapeHtml(repo.language)}</span>` : ''}
-                            <span class="repo-stars"><i class="fa-solid fa-star" aria-hidden="true"></i> ${escapeHtml(repo.stargazers_count)}</span>
-                            <span class="repo-forks"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> ${escapeHtml(repo.forks_count)}</span>
-                        </div>
-                    </article>
-                `).join('')}
-            </div>
-        `;
-    } catch (error) {
-        repoSection.innerHTML = '<p>Failed to load repositories.</p>';
-    }
 }
 
 function createCharacterJourney(stage, reducedMotion) {
@@ -909,6 +856,26 @@ function initTravelerDrag() {
     }, { passive: true });
 }
 
+// Copy a paper's BibTeX entry (kept in a sibling <template>) to the clipboard.
+function initBibtexButtons() {
+    document.querySelectorAll('.pub-bibtex').forEach(button => {
+        const source = button.nextElementSibling;
+        if (!source?.matches('.pub-bibtex-source')) return;
+        const label = button.innerHTML;
+        let resetTimer = 0;
+        button.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(source.innerHTML.trim());
+                button.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Copied';
+            } catch (error) {
+                button.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i> Copy failed';
+            }
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => { button.innerHTML = label; }, 1600);
+        });
+    });
+}
+
 function initPublicationFilters(onChange) {
     const section = document.getElementById('publications');
     const controls = section?.querySelector('.publication-controls');
@@ -949,6 +916,7 @@ function initPublicationFilters(onChange) {
 document.addEventListener('DOMContentLoaded', async () => {
     initAmbientTags();
     initThemeToggle();
+    initBibtexButtons();
 
     // Initialize before network requests; all papers remain available without JS.
     let scrollSpy;
@@ -964,7 +932,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     scrollSpy = initScrollSpy();
     initTravelerDrag();
 
-    await loadAndRenderGitHubRepos();
     externalizeLinks();
     scrollSpy?.refresh();
 });
