@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junyi Wu | Purdue Mathematics PhD Student</title>
+    <meta name="description" content="Junyi Wu is a Mathematics PhD student at Purdue University researching post-training, reinforcement learning, and preference alignment of generative models.">
+    <meta name="author" content="Junyi Wu">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121315" media="(prefers-color-scheme: dark)">
+
+    <link rel="canonical" href="https://junyi-w.github.io/">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://junyi-w.github.io/">
+    <meta property="og:title" content="Junyi Wu | Purdue Mathematics PhD Student">
+    <meta property="og:description" content="Research in post-training, reinforcement learning, and preference alignment of generative models.">
+    <meta property="og:image" content="https://junyi-w.github.io/images/photo.jpg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="800">
+    <meta property="profile:first_name" content="Junyi">
+    <meta property="profile:last_name" content="Wu">
+    <meta name="twitter:card" content="summary">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Junyi Wu",
+        "url": "https://junyi-w.github.io/",
+        "image": "https://junyi-w.github.io/images/photo.jpg",
+        "jobTitle": "PhD Student",
+        "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "Purdue University",
+            "department": { "@type": "Organization", "name": "Department of Mathematics" }
+        },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Chinese Academy of Sciences" },
+        "knowsAbout": ["Reinforcement learning", "RLHF", "Preference alignment", "Diffusion models", "Large language models"],
+        "sameAs": [
+            "https://scholar.google.com/citations?user=_lm1fGMAAAAJ",
+            "https://github.com/Junyi-W",
+            "https://www.linkedin.com/in/junyi-wu-a82165364",
+            "https://huggingface.co/Junyi-W"
+        ]
+    }
+    </script>
+
+    <script>
+        (function () {
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (error) { stored = null; }
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;650;700;800&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#about">Skip to main content</a>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="topbar-name" href="#top">Junyi Wu</a>
+            <nav class="topbar-nav" aria-label="Primary navigation">
+                <ul class="nav-links">
+                    <li><a class="active" href="#about" aria-current="location">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </nav>
+            <div class="topbar-controls">
+                <button class="ambient-toggle" type="button" aria-label="Pause background animation" aria-pressed="false" hidden>
+                    <span class="ambient-toggle-icon" aria-hidden="true"></span>
+                    <span class="ambient-toggle-label">Pause background</span>
+                </button>
+                <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page" id="top">
+        <header class="hero">
+            <div class="hero-text">
+                <h1 class="hero-name">Junyi Wu</h1>
+                <p class="hero-role">PhD Student · Mathematics · Purdue University</p>
+                <div class="social-links" aria-label="Social links">
+                    <a href="https://scholar.google.com/citations?user=_lm1fGMAAAAJ" title="Google Scholar" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></a>
+                    <a href="https://github.com/Junyi-W" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/junyi-wu-a82165364" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="pdf/CV.pdf" title="CV" aria-label="CV"><span class="social-cv-mark" aria-hidden="true">CV</span></a>
+                    <a href="mailto:wu2393@purdue.edu" title="Email" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="hero-portrait">
+                <!-- TODO: replace with your photo -->
+                <img src="images/photo.jpg" alt="Junyi Wu">
+            </div>
+        </header>
+
+        <div class="trail" aria-hidden="true">
+            <div class="trail-track">
+                <div class="traveler-stage" title="Drag me to scroll">
+                    <div class="traveler-body"><div class="traveler-wave">
+                        <span class="torch-glow"></span>
+                        <img class="traveler-avatar" src="images/pixel-avatar.png" alt="" width="240" height="189" draggable="false">
+                        <span class="torch-sparks"><i></i><i></i><i></i><i></i></span>
+                    </div></div>
+                </div>
+                <span class="trail-line"></span>
+                <span class="trail-readout"></span>
+            </div>
+        </div>
+
+        <main id="main-content">
+            <section id="about" class="section">
+                <h2 class="section-title">About</h2>
+                <div class="prose">
+                    <p>Hi there! I'm a PhD student at <strong>Purdue University</strong> <img class="inline-logo" src="images/purdue.svg" alt="Purdue Logo">, Department of Mathematics, working in <a href="https://www.math.purdue.edu/~lin491/">Prof. Guang Lin</a>'s research group. My research focuses on post-training of large generative models, including LLMs and diffusion models, through principled reinforcement learning and preference alignment. I received my B.S. in Mathematics and Applied Mathematics from the <strong>University of Chinese Academy of Sciences</strong> <img class="inline-logo" src="images/ucas_icon.png" alt="UCAS Logo">.</p>
+                </div>
+            </section>
+
+            <section id="research" class="section">
+                <h2 class="section-title">Research Interests</h2>
+                <ul class="research-list">
+                    <li>
+                        <span class="interest-keyword">LLM Post-Training</span>
+                        <p>Reinforcement Learning, RLHF, Preference Optimization, and Reasoning.</p>
+                    </li>
+                    <li>
+                        <span class="interest-keyword">Alignment</span>
+                        <p>KL-Regularized Reward Fine-Tuning, One-Step Diffusion Generators, and VLA Policies.</p>
+                    </li>
+                </ul>
+                <p class="collab-invite">
+                    <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                    Open to collaborations! Feel free to reach out if our research interests align.
+                </p>
+            </section>
+
+            <section id="news" class="section">
+                <h2 class="section-title">News</h2>
+                <div class="news-container" tabindex="0" role="region" aria-label="Latest news archive">
+                    <ol class="news-list">
+                        <li class="news-item"><span class="news-date">Oct 2026</span><p>Two papers were accepted to NeurIPS 2026.</p></li>
+                        <li class="news-item"><span class="news-date">Jun 2026</span><p>Junyi serves as a co-mentor for Purdue SURF 2026.</p></li>
+                        <li class="news-item"><span class="news-date">May 2026</span><p>Our paper on one-step generator RL (DIDR) was released, with models and a demo on Hugging Face.</p></li>
+                        <li class="news-item"><span class="news-date">2026</span><p>Junyi serves as reviewer for NeurIPS 2026.</p></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="publications" class="section">
+                <h2 class="section-title">Publications <span class="section-note">* equal contribution</span></h2>
+                <div class="publication-controls" role="group" aria-label="Filter publications by research area" hidden>
+                    <button type="button" data-publication-filter="all" aria-pressed="true" aria-controls="publication-list">All <span class="publication-count">4</span></button>
+                    <button type="button" data-publication-filter="alignment" aria-pressed="false" aria-controls="publication-list">Post-Training &amp; Alignment <span class="publication-count">2</span></button>
+                    <button type="button" data-publication-filter="theory" aria-pressed="false" aria-controls="publication-list">Learning Theory <span class="publication-count">1</span></button>
+                    <button type="button" data-publication-filter="sciml" aria-pressed="false" aria-controls="publication-list">Scientific ML <span class="publication-count">1</span></button>
+                </div>
+                <p class="publication-status" role="status" aria-live="polite" aria-atomic="true">4 papers</p>
+                <div class="publication-list" id="publication-list">
+                    <article class="pub" data-publication-topic="alignment">
+                        <div class="pub-thumb">
+                            <img loading="lazy" src="images/didr.jpg" alt="DIDR one-step text-to-image samples" width="1000" height="1000">
+                        </div>
+                        <div class="pub-body">
+                            <span class="pub-venue">NeurIPS 2026</span>
+                            <h3 class="pub-title">Diff-Instruct with Diffused Reward: Towards Principled One-step Generator RL</h3>
+                            <p class="pub-authors"><span class="highlight-name">Junyi Wu</span>, Weijian Luo, Haoyang Zheng, Ruizhe Zhang, Guang Lin</p>
+                            <p class="pub-tldr">A data-free, trajectory-level RLHF objective for one-step text-to-image generators that shares the minimizer of clean-image KL-regularized RLHF.</p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/abs/2605.24001"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Paper</a>
+                                <a href="https://github.com/Junyi-W/DIDR"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                                <a href="https://huggingface.co/Junyi-W/DIDR"><i class="fa-solid fa-cube" aria-hidden="true"></i> Model</a>
+                                <a href="https://huggingface.co/spaces/Junyi-W/DIDR"><i class="fa-solid fa-globe" aria-hidden="true"></i> Demo</a>
+                                <button class="pub-bibtex" type="button"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</button>
+                                <template class="pub-bibtex-source">@inproceedings{wu2026didr,
+  title     = {Diff-Instruct with Diffused Reward: Towards Principled One-step Generator RL},
+  author    = {Wu, Junyi and Luo, Weijian and Zheng, Haoyang and Zhang, Ruizhe and Lin, Guang},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026},
+  eprint    = {2605.24001},
+  archivePrefix = {arXiv}
+}</template>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pub" data-publication-topic="theory">
+                        <div class="pub-thumb">
+                            <img loading="lazy" src="images/qslb.jpg" alt="Safe quantum bandit models" width="1194" height="473">
+                        </div>
+                        <div class="pub-body">
+                            <span class="pub-venue">NeurIPS 2026</span>
+                            <h3 class="pub-title">Quantum Safe Stochastic Linear Bandits</h3>
+                            <p class="pub-authors">Ruizhe Zhang, <span class="highlight-name">Junyi Wu</span>, Guang Lin</p>
+                            <p class="pub-tldr">Constrained Thompson sampling with high-probability action feasibility and polylogarithmic regret under coherent quantum feedback.</p>
+                        </div>
+                    </article>
+
+                    <article class="pub" data-publication-topic="alignment">
+                        <div class="pub-thumb">
+                            <img loading="lazy" src="images/cocoa.jpg" alt="COCOA action correction overview" width="1000" height="407">
+                        </div>
+                        <div class="pub-body">
+                            <span class="pub-venue">Preprint 2026</span>
+                            <h3 class="pub-title">COCOA: Action Correction for VLA Policies via Supervised Fine-Tuning and Preference Optimization</h3>
+                            <p class="pub-authors">Yi Wu, Manav Kulshrestha, <span class="highlight-name">Junyi Wu</span>, Kai Cheng, Nan Jiang, Aniket Bera, Lin Tan</p>
+                            <p class="pub-tldr">An action-conditioned correction policy that repairs a frozen VLA's proposed actions, trained with SFT followed by Flow-DPO-style preference optimization.</p>
+                        </div>
+                    </article>
+
+                    <article class="pub" data-publication-topic="sciml">
+                        <div class="pub-thumb">
+                            <img loading="lazy" src="images/pockan.jpg" alt="PO-CKAN framework overview" width="569" height="624">
+                        </div>
+                        <div class="pub-body">
+                            <span class="pub-venue">Preprint 2025</span>
+                            <h3 class="pub-title">PO-CKAN: Physics Informed Deep Operator Kolmogorov Arnold Networks with Chunk Rational Structure</h3>
+                            <p class="pub-authors"><span class="highlight-name">Junyi Wu</span>, Guang Lin</p>
+                            <p class="pub-tldr">A physics-informed DeepONet built from chunk-wise rational KAN layers, enabling scalable KAN-based operator learning with consistent gains over PI-DeepONet.</p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/abs/2510.08795"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Paper</a>
+                                <a href="https://github.com/Junyi-W/pockan-code"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+                                <button class="pub-bibtex" type="button"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</button>
+                                <template class="pub-bibtex-source">@article{wu2025pockan,
+  title   = {{PO-CKAN}: Physics Informed Deep Operator {Kolmogorov} {Arnold} Networks with Chunk Rational Structure},
+  author  = {Wu, Junyi and Lin, Guang},
+  journal = {arXiv preprint arXiv:2510.08795},
+  year    = {2025}
+}</template>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-list">
+                    <div class="education-item">
+                        <div class="edu-content">
+                            <h3>Ph.D. in Mathematics, Purdue University</h3>
+                            <p>Advisor: <a href="https://www.math.purdue.edu/~lin491/">Prof. Guang Lin</a></p>
+                        </div>
+                        <div class="edu-logo"><img src="images/purdue_small.png" alt="Purdue University Logo"></div>
+                    </div>
+                    <div class="education-item">
+                        <div class="edu-content">
+                            <h3>B.S. in Mathematics and Applied Mathematics, University of Chinese Academy of Sciences</h3>
+                        </div>
+                        <div class="edu-logo"><img src="images/ucas_icon.png" alt="University of Chinese Academy of Sciences Logo"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="section">
+                <h2 class="section-title">Academic Services</h2>
+                <div class="services">
+                    <span class="services-label">Conference Reviewer</span>
+                    <div class="services-venues">
+                        <span class="venue-tag">NeurIPS 2026</span>
+                    </div>
+                </div>
+                <div class="services">
+                    <span class="services-label">Mentoring</span>
+                    <div class="services-venues">
+                        <span class="venue-tag">Purdue SURF 2026</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <span class="signature" aria-hidden="true"></span>
+            Built by Junyi Wu · Last updated <span id="footer-update-date"></span>
+        </footer>
+    </div>
+</body>
+</html>
